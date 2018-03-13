@@ -34,7 +34,7 @@ class Response
 
     public function setAccessControlAllowCredentials(bool $credentiale)
     {
-        $this->setHeader('Access-Control-Allow-Credentials', $credentiale ? 'true', 'false');
+        $this->setHeader('Access-Control-Allow-Credentials', $credentiale ? 'true' : 'false');
 
         return $this;
     }
