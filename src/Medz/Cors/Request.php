@@ -19,6 +19,7 @@ class Request
      * Create the request.
      *
      * @param any $request
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function __construct($request = null)
@@ -36,7 +37,9 @@ class Request
      *
      * @param string $name
      * @param string $default
+     *
      * @return string
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function getHeader(string $name, string $default = ''): string
@@ -62,6 +65,7 @@ class Request
      * Get "Access-Control-Request-Method" header line string.
      *
      * @return string
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function getAccessControlRequestMethod(): string
@@ -76,6 +80,7 @@ class Request
      * Get "Access-Control-Request-Headers" header line string.
      *
      * @return string
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function getAccessControlRequestHeaders(): string
@@ -90,6 +95,7 @@ class Request
      * Get "Origin" header line string.
      *
      * @return string
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function getOrigin(): string
