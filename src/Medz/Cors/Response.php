@@ -29,4 +29,9 @@ class Response
 
         $this->response[$name] = $value;
     }
+
+    public function returnNative()
+    {
+        return $this->response;
+    }
 }

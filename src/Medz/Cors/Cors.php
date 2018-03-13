@@ -15,7 +15,7 @@ class Cors
     protected $exposeHeaders = [];
     protected $maxAge = 0;
 
-    public function __construct(array $config = [])
+    public function __construct(array $config, $request = null, $response = [])
     {
         $this->allowedHeaders = (array) $config['allow-headers'] ?? [];
         $this->exposeHeaders = (array) $config['expose-headers'] ?? [];
@@ -23,8 +23,8 @@ class Cors
         $this->methods = (array) $config['methods'] ?? [];
         $this->maxAge = (int) $config['max-age'] ?? 0;
 
-        $this->setRequest(null);
-        $this->setResponse([]);
+        $this->setRequest($request);
+        $this->setResponse($response);
     }
 
     public function handle()
