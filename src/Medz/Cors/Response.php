@@ -56,7 +56,7 @@ class Response
             $headers = implode(', ', $headers);
         }
 
-        $this->setHeader('Access-Control-Allow-Headers', (string) $headers)
+        $this->setHeader('Access-Control-Allow-Headers', (string) $headers);
 
         return $this;
     }
