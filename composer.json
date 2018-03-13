@@ -1,0 +1,17 @@
+{
+    "name": "medz/cors",
+    "description": "PHP CORS (Cross-origin resource sharing) middleware.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Seven Du",
+            "email": "shiweidu@outlook.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Medz\\Cors\\": "src/Medz/Cors/"
+        }
+    }
+}
