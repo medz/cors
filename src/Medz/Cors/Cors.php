@@ -22,6 +22,9 @@ class Cors
         $this->origins = (array) $config['origins'] ?? [];
         $this->methods = (array) $config['methods'] ?? [];
         $this->maxAge = (int) $config['max-age'] ?? 0;
+
+        $this->setRequest(null);
+        $this->setResponse([]);
     }
 
     public function handle()
@@ -29,17 +32,22 @@ class Cors
         // todo.
     }
 
-    protected function setRequest($request)
+    public function setRequest($request)
     {
         $this->request = new Request($request);
 
         return $this;
     }
 
-    protected function setRsponse(&$response)
+    public function setResponse($response)
     {
         $this->response = new Response($response);
 
         return $this;
+    }
+
+    public function getResponse()
+    {
+        return $this->response->returnNative();
     }
 }
