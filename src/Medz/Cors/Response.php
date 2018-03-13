@@ -14,7 +14,7 @@ class Response
     {
         $this->response = $response;
 
-        if (! $response instanceof Psr7ResponseInterface) {
+        if (!$response instanceof Psr7ResponseInterface) {
             $this->response = [];
         }
     }
