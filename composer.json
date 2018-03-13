@@ -13,5 +13,8 @@
         "psr-4": {
             "Medz\\Cors\\": "src/Medz/Cors/"
         }
+    },
+    "require": {
+        "php": ">=7.0"
     }
 }
