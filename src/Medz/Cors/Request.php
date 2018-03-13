@@ -85,4 +85,18 @@ class Request
 
         return $this->getHeader($name, $default);
     }
+
+    /**
+     * Get "Origin" header line string.
+     *
+     * @return string
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    public function getOrigin(): string
+    {
+        $name = 'Origin';
+        $default = '';
+
+        return $this->getHeader($name, $default);
+    }
 }
