@@ -6,7 +6,7 @@ namespace Medz\Cors;
 
 use Psr\Http\Message\RequestInterface as Psr7RequestInterface;
 
-class Request
+class Request implements RequestInterface
 {
     /**
      * request native.
