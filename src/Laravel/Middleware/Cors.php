@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Medz\Cors\Laravel\Middleware;
 
 use Closure;
-use Medz\Cors\CorsInterface;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Foundation\Http\Events\RequestHandled;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Medz\Cors\CorsInterface;
 
 class Cors
 {
@@ -21,7 +21,7 @@ class Cors
     protected $cors;
 
     /**
-     * Laravel Event Dispatcher
+     * Laravel Event Dispatcher.
      *
      * @var \Illuminate\Contracts\Events\Dispatcher
      */
@@ -30,8 +30,9 @@ class Cors
     /**
      * Create the handle.
      *
-     * @param \Medz\Cors\CorsInterface $cors
+     * @param \Medz\Cors\CorsInterface                $cors
      * @param \Illuminate\Contracts\Events\Dispatcher $events
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function __construct(CorsInterface $cors, Dispatcher $events)
@@ -44,8 +45,10 @@ class Cors
      * Handle an incoming request.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Closure $next
+     * @param \Closure                 $next
+     *
      * @return mixed
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function handle($request, Closure $next)

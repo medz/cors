@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Medz\Cors\Laravel\Providers;
 
+use Illuminate\Support\ServiceProvider;
 use Medz\Cors\Cors;
 use Medz\Cors\CorsInterface;
 use Medz\Cors\Laravel\Middleware\Cors as CorsMiddleware;
-use Illuminate\Support\ServiceProvider;
 
 class LaravelServiceProvider extends ServiceProvider
 {
@@ -24,6 +24,7 @@ class LaravelServiceProvider extends ServiceProvider
      * Bootstrap the CORS service provider.
      *
      * @return void
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function boot()
@@ -46,6 +47,7 @@ class LaravelServiceProvider extends ServiceProvider
      * Register the service provider.
      *
      * @return void
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function register()
@@ -70,6 +72,7 @@ class LaravelServiceProvider extends ServiceProvider
      * Get the services provided by the provider.
      *
      * @return array
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function providers()
