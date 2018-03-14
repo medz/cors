@@ -35,6 +35,13 @@ class Cors implements CorsInterface
     protected $methods = [];
 
     /**
+     * Allowed request credentials.
+     *
+     * @var bool
+     */
+    protected $allowedCredentials = false;
+
+    /**
      * Allowed request headers.
      *
      * @var array
@@ -66,11 +73,12 @@ class Cors implements CorsInterface
      */
     public function __construct(array $config, $request = null, $response = [])
     {
-        $this->allowedHeaders = (array) $config['allow-headers'] ?? [];
-        $this->exposeHeaders = (array) $config['expose-headers'] ?? [];
-        $this->origins = (array) $config['origins'] ?? [];
-        $this->methods = (array) $config['methods'] ?? [];
-        $this->maxAge = (int) $config['max-age'] ?? 0;
+        $this->allowedCredentials = (bool) ($config['allwo-credentiails'] ?? false);
+        $this->allowedHeaders = (array) ($config['allow-headers'] ?? []);
+        $this->exposeHeaders = (array) ($config['expose-headers'] ?? []);
+        $this->origins = (array) ($config['origins'] ?? []);
+        $this->methods = (array) ($config['methods'] ?? []);
+        $this->maxAge = (int) ($config['max-age'] ?? 0);
 
         $this->setRequest($request);
         $this->setResponse($response);
@@ -85,7 +93,66 @@ class Cors implements CorsInterface
      */
     public function handle()
     {
-        // todo.
+        $this->response->setAccessControlAllowCredentials($this->getCredentials());
+        $this->response->setAccessControlAllowOrigin($this->getOrigin());
+        $this->response->setAccessControlAllowMethods($this->getMethods());
+        $this->response->setAccessControlAllowHeaders($this->getAllowheaders());
+        $this->response->setAccessControlExposeHeaders($this->getExposeHeaders());
+        $this->response->setAccessControlMaxAge($this->getMaxAge());
+    }
+
+    public function getCredentials(): bool
+    {
+        return $this->allowedCredentials;
+    }
+
+    public function getOrigin(): string
+    {
+        // The origin is seted "*"?
+        if (in_array('*', $this->origins)) {
+            return '*';
+        }
+
+        // Get request heaer origin line.
+        // If the request origin in config
+        // to be origins return the request origin value.
+        $requestOrigin = $this->request->getOrigin();
+        if (in_array($requestOrigin, $this->origins)) {
+            return $requestOrigin;
+        }
+
+        // Return empty.
+        return '';
+    }
+
+    public function getMethods()
+    {
+        $requestMethod = $this->request->getAccessControlRequestMethod();
+        if (is_array('*', $this->methods) && $requestMethod) {
+            return $requestMethod;
+        }
+
+        return $this->methods;
+    }
+
+    public function getAllowheaders()
+    {
+        $requestHeaders = $this->request->getAccessControlRequestHeaders();
+        if (in_array('*', $this->allowedHeaders) && $requestHeaders) {
+            return $requestHeaders;
+        }
+
+        return $this->allowedHeaders;
+    }
+
+    public function getExposeHeaders(): array
+    {
+        return $this->exposeHeaders;
+    }
+
+    public function getMaxAge(): int
+    {
+        return $this->maxAge;
     }
 
     /**
