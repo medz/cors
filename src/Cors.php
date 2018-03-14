@@ -63,6 +63,16 @@ class Cors implements CorsInterface
     protected $maxAge = 0;
 
     /**
+     * The CORS inited status.
+     *
+     * @var bool[]
+     */
+    protected $initialized = [
+        'request' => false,
+        'response' => false,
+    ];
+
+    /**
      * Create the CORS Handle.
      *
      * @param array $config
@@ -71,7 +81,7 @@ class Cors implements CorsInterface
      *
      * @author Seven Du <shiweidu@outlook.com>
      */
-    public function __construct(array $config, $request = null, $response = [])
+    public function __construct(array $config)
     {
         $this->allowedCredentials = (bool) ($config['allwo-credentiails'] ?? false);
         $this->allowedHeaders = (array) ($config['allow-headers'] ?? []);
@@ -79,9 +89,6 @@ class Cors implements CorsInterface
         $this->origins = (array) ($config['origins'] ?? []);
         $this->methods = (array) ($config['methods'] ?? []);
         $this->maxAge = (int) ($config['max-age'] ?? 0);
-
-        $this->setRequest($request);
-        $this->setResponse($response);
     }
 
     /**
@@ -93,6 +100,10 @@ class Cors implements CorsInterface
      */
     public function handle()
     {
+        if (in_array(false, array_values($this->initialized))) {
+            throw new CorsInitException('Not set "request" or "response"');
+        }
+
         $this->response->setAccessControlAllowCredentials($this->getCredentials());
         $this->response->setAccessControlAllowOrigin($this->getOrigin());
         $this->response->setAccessControlAllowMethods($this->getMethods());
@@ -200,14 +211,16 @@ class Cors implements CorsInterface
     /**
      * Set a request.
      *
+     * @param string $type
      * @param any $request set a request, if native PHP set the "$request" null.
      *                     the "$request" MUST be implemented.
      *
      * @author Seven Du <shiweidu@outlook.com>
      */
-    public function setRequest($request)
+    public function setRequest(string $type, $request)
     {
-        $this->request = new Request($request);
+        $this->request = new Request($type, $request);
+        $this->initialized['request'] = true;
 
         return $this;
     }
@@ -215,13 +228,15 @@ class Cors implements CorsInterface
     /**
      * Set a response.
      *
+     * @param string $type
      * @param any $response the "$response" is framework interface or array.
      *
      * @author Seven Du <shiweidu@outlook.com>
      */
-    public function setResponse($response)
+    public function setResponse(string $type, $response)
     {
-        $this->response = new Response($response);
+        $this->response = new Response($type, $response);
+        $this->initialized['response'] = true;
 
         return $this;
     }

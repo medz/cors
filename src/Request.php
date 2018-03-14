@@ -16,19 +16,29 @@ class Request implements RequestInterface
     protected $request;
 
     /**
+     * The request type.
+     *
+     * @var string
+     */
+    protected $type;
+
+    /**
      * Create the request.
      *
+     * @param string $type
      * @param any $request
      *
      * @author Seven Du <shiweidu@outlook.com>
      */
-    public function __construct($request = null)
+    public function __construct(string $type, $request = null)
     {
+        $this->type = strtolower($type);
         $this->request = $request;
 
         // $request not is framework interface, using global veriable $_REQUEST
-        if (!$request instanceof Psr7RequestInterface) {
+        if ($this->type === 'array' || !$response || is_array($response)) {
             $this->request = array_merge($_REQUEST, (array) $request);
+            $this->type = 'array';
         }
     }
 
@@ -44,9 +54,15 @@ class Request implements RequestInterface
      */
     public function getHeader(string $name, string $default = ''): string
     {
-        // Check the request is PSR-7 http message.
-        if ($this->request instanceof Psr7RequestInterface) {
-            return $this->request->getHeaderLine($name) ?: $default;
+        switch ($this->type) {
+            // Check the request is PSR-7 http message.
+            case 'psr-7':
+                return $this->request->getHeaderLine($name) ?: $default;
+
+            // Check the is Laravel or Symfony.
+            case 'laravel':
+            case 'symfony':
+                return $this->request->headers->get($name) ?: $default;
         }
 
         // Not using framewoerk ?

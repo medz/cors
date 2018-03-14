@@ -16,20 +16,30 @@ class Response implements ResponseInterface
     protected $response;
 
     /**
+     * The response type.
+     *
+     * @var string
+     */
+    protected $type;
+
+    /**
      * Create the response.
      *
+     * @param string $type
      * @param any $response
      *
      * @return void
      *
      * @author Seven Du <shiweidu@outlook.com>
      */
-    public function __constrcut($response = null)
+    public function __constrcut(string $type, $response = null)
     {
+        $this->type = strtolower($type);
         $this->response = $response;
 
-        if (!$response instanceof Psr7ResponseInterface) {
-            $this->response = [];
+        if ($this->type === 'array' || !$response || is_array($response)) {
+            $this->response = is_array($response) ? $response : [];
+            $this->type = 'array';
         }
     }
 
@@ -43,13 +53,20 @@ class Response implements ResponseInterface
      */
     public function setHeader(string $name, string $value)
     {
-        if ($this->response instanceof Psr7ResponseInterface) {
-            $this->response = $this->response->withHeader($name, $value);
+        switch ($this->type) {
+            case 'psr-7':
+                $this->response = $this->response->withHeader($name, $value);
+                break;
 
-            return $this;
+            case 'laravel':
+            case 'symfony':
+                $this->response->headers->set($name, $value);
+                break;
+            
+            default:
+                $this->response[$name] = $value;
+                break;
         }
-
-        $this->response[$name] = $value;
 
         return $this;
     }
