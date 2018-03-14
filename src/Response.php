@@ -19,7 +19,9 @@ class Response implements ResponseInterface
      * Create the response.
      *
      * @param any $response
+     *
      * @return void
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function __constrcut($response = null)
@@ -36,6 +38,7 @@ class Response implements ResponseInterface
      *
      * @param string $name
      * @param string $value
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function setHeader(string $name, string $value)
@@ -55,6 +58,7 @@ class Response implements ResponseInterface
      * Set "Access-Control-Alow-Credentials" heaer line.
      *
      * @param bool $credentiale
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function setAccessControlAllowCredentials(bool $credentiale)

@@ -11,6 +11,7 @@ interface ResponseInterface
      *
      * @param string $name
      * @param string $value
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function setHeader(string $name, string $value);
