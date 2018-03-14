@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Medz\Cors\Laravel\Providers;
 
+use Illuminate\Foundation\Http\Kernel;
 use Illuminate\Support\ServiceProvider;
 use Medz\Cors\Cors;
 use Medz\Cors\CorsInterface;
