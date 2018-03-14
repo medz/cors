@@ -19,7 +19,7 @@ class LaravelServiceProvider extends ServiceProvider
      *
      * @author Seven Du <shiweidu@outlook.com>
      */
-    protected $defer = true;
+    protected $defer = false;
 
     /**
      * Bootstrap the CORS service provider.
@@ -57,7 +57,6 @@ class LaravelServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../../../config/cors.php', 'cors');
 
         // Register the CORS server instance alias.
-        $this->app->alias(CorsInterface::class, CorsInterface::class);
         $this->app->alias(CorsInterface::class, Cors::class);
 
         // Register CORS servise singleton.
@@ -67,19 +66,5 @@ class LaravelServiceProvider extends ServiceProvider
 
             return new Cors($config);
         });
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     *
-     * @author Seven Du <shiweidu@outlook.com>
-     */
-    public function providers()
-    {
-        return [
-            CorsInterface::class, Cors::class,
-        ];
     }
 }

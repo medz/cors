@@ -34,7 +34,7 @@ class Request implements RequestInterface
         $this->request = $request;
 
         // $request not is framework interface, using global veriable $_REQUEST
-        if ($this->type === 'array' || !$response || is_array($response)) {
+        if ($this->type === 'array' || !$request || is_array($request)) {
             $this->request = array_merge($_REQUEST, (array) $request);
             $this->type = 'array';
         }
