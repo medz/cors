@@ -101,11 +101,23 @@ class Cors implements CorsInterface
         $this->response->setAccessControlMaxAge($this->getMaxAge());
     }
 
+    /**
+     * Get allowed credentials.
+     *
+     * @return bool
+     * @author Seven Du <shiweidu@outlook.com>
+     */
     public function getCredentials(): bool
     {
         return $this->allowedCredentials;
     }
 
+    /**
+     * Get allowed origin
+     *
+     * @return string
+     * @author Seven Du <shiweidu@outlook.com>
+     */
     public function getOrigin(): string
     {
         // The origin is seted "*"?
@@ -125,6 +137,12 @@ class Cors implements CorsInterface
         return '';
     }
 
+    /**
+     * Get allowed methods.
+     *
+     * @return string|array
+     * @author Seven Du <shiweidu@outlook.com>
+     */
     public function getMethods()
     {
         $requestMethod = $this->request->getAccessControlRequestMethod();
@@ -135,6 +153,12 @@ class Cors implements CorsInterface
         return $this->methods;
     }
 
+    /**
+     * Get allow-headers.
+     *
+     * @return string|array
+     * @author Seven Du <shiweidu@outlook.com>
+     */
     public function getAllowheaders()
     {
         $requestHeaders = $this->request->getAccessControlRequestHeaders();
@@ -145,11 +169,23 @@ class Cors implements CorsInterface
         return $this->allowedHeaders;
     }
 
+    /**
+     * Get expose-headers.
+     *
+     * @return array
+     * @author Seven Du <shiweidu@outlook.com>
+     */
     public function getExposeHeaders(): array
     {
         return $this->exposeHeaders;
     }
 
+    /**
+     * Get cache max-age line value.
+     *
+     * @return int
+     * @author Seven Du <shiweidu@outlook.com>
+     */
     public function getMaxAge(): int
     {
         return $this->maxAge;
