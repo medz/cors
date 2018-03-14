@@ -1,5 +1,8 @@
 # CORS
 
+[![StyleCI](https://styleci.io/repos/125001413/shield?branch=master)](https://styleci.io/repos/125001413)
+[![Build Status](https://travis-ci.org/medz/cors.svg?branch=master)](https://travis-ci.org/medz/cors)
+
 PHP CORS (Cross-origin resource sharing) middleware.
 
 ## Support
