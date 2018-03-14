@@ -14,5 +14,10 @@ class CorsTest extends TestCase
         $cors = $this->createMock(Cors::class);
 
         $this->assertTrue($cors instanceof CorsInterface);
+
+        $cors = new Cors([]);
+        $cors->handle();
+
+        var_dump($cors);
     }
 }

@@ -28,7 +28,7 @@ class Request implements RequestInterface
 
         // $request not is framework interface, using global veriable $_REQUEST
         if (!$request instanceof Psr7RequestInterface) {
-            $this->request = $_REQUEST;
+            $this->request = array_merge($_REQUEST, (array) $request);
         }
     }
 

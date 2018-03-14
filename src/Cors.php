@@ -128,7 +128,7 @@ class Cors implements CorsInterface
     public function getMethods()
     {
         $requestMethod = $this->request->getAccessControlRequestMethod();
-        if (is_array('*', $this->methods) && $requestMethod) {
+        if (in_array('*', $this->methods) && $requestMethod) {
             return $requestMethod;
         }
 

@@ -1,6 +1,8 @@
 <?php
 
-namespace Medz\Core;
+declare(strict_types=1);
+
+namespace Medz\Cors;
 
 interface RequestInterface
 {
