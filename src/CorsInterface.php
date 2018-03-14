@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Medz\Cors;
 
-interface Cors
+interface CorsInterface
 {
     /**
      * Run the CORS handle.

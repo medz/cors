@@ -14,8 +14,16 @@
             "Medz\\Cors\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Medz\\Cors\\Tests\\": "tests/"
+        }
+    },
     "require": {
         "php": ">=7.0",
         "psr/http-message": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.5"
     }
 }
