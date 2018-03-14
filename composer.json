@@ -26,6 +26,9 @@
         "phpunit/phpunit": "~6.5"
     },
     "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
         "laravel": {
             "providers": [
                 "Medz\\Cors\\Laravel\\Providers\\LaravelServiceProvider"
