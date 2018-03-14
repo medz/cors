@@ -105,6 +105,7 @@ class Cors implements CorsInterface
      * Get allowed credentials.
      *
      * @return bool
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function getCredentials(): bool
@@ -113,9 +114,10 @@ class Cors implements CorsInterface
     }
 
     /**
-     * Get allowed origin
+     * Get allowed origin.
      *
      * @return string
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function getOrigin(): string
@@ -141,6 +143,7 @@ class Cors implements CorsInterface
      * Get allowed methods.
      *
      * @return string|array
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function getMethods()
@@ -157,6 +160,7 @@ class Cors implements CorsInterface
      * Get allow-headers.
      *
      * @return string|array
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function getAllowheaders()
@@ -173,6 +177,7 @@ class Cors implements CorsInterface
      * Get expose-headers.
      *
      * @return array
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function getExposeHeaders(): array
@@ -184,6 +189,7 @@ class Cors implements CorsInterface
      * Get cache max-age line value.
      *
      * @return int
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function getMaxAge(): int

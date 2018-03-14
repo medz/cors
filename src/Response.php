@@ -72,6 +72,7 @@ class Response implements ResponseInterface
      * Set "Access-Control-Allow-Methods" header line.
      *
      * @param string|string[] $methods
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function setAccessControlAllowMethods($methods)
@@ -89,6 +90,7 @@ class Response implements ResponseInterface
      * Set "Access-Control-Allow-Headers" header line.
      *
      * @param string|string[] $headers
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function setAccessControlAllowHeaders($headers)
@@ -106,6 +108,7 @@ class Response implements ResponseInterface
      * Set "Access-Control-Allow-Origin" header line.
      *
      * @param string $origin
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function setAccessControlAllowOrigin(string $origin)
@@ -119,6 +122,7 @@ class Response implements ResponseInterface
      * Set "Access-Control-Expose-Headers" header line.
      *
      * @param string|string[] $headers
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function setAccessControlExposeHeaders($headers)
@@ -136,6 +140,7 @@ class Response implements ResponseInterface
      * Set "Access-Control-Max-Age" header line.
      *
      * @param int $maxAge
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function setAccessControlMaxAge(int $maxAge = 0)
@@ -148,9 +153,10 @@ class Response implements ResponseInterface
     }
 
     /**
-     * Return native
+     * Return native.
      *
      * @return any
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function returnNative()
