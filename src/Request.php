@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Medz\Cors;
 
-use Psr\Http\Message\RequestInterface as Psr7RequestInterface;
-
 class Request implements RequestInterface
 {
     /**
@@ -26,7 +24,7 @@ class Request implements RequestInterface
      * Create the request.
      *
      * @param string $type
-     * @param any $request
+     * @param any    $request
      *
      * @author Seven Du <shiweidu@outlook.com>
      */

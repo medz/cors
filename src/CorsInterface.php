@@ -19,8 +19,8 @@ interface CorsInterface
      * Set a request.
      *
      * @param string $type
-     * @param any $request set a request, if native PHP set the "$request" null.
-     *                     the "$request" MUST be implemented.
+     * @param any    $request set a request, if native PHP set the "$request" null.
+     *                        the "$request" MUST be implemented.
      *
      * @author Seven Du <shiweidu@outlook.com>
      */
@@ -30,7 +30,7 @@ interface CorsInterface
      * Set a response.
      *
      * @param string $type
-     * @param any $response the "$response" is framework interface or array.
+     * @param any    $response the "$response" is framework interface or array.
      *
      * @author Seven Du <shiweidu@outlook.com>
      */

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Medz\Cors;
 
-use Psr\Http\Message\ResponseInterface as Psr7ResponseInterface;
-
 class Response implements ResponseInterface
 {
     /**
@@ -26,7 +24,7 @@ class Response implements ResponseInterface
      * Create the response.
      *
      * @param string $type
-     * @param any $response
+     * @param any    $response
      *
      * @return void
      *
@@ -62,7 +60,7 @@ class Response implements ResponseInterface
             case 'symfony':
                 $this->response->headers->set($name, $value);
                 break;
-            
+
             default:
                 $this->response[$name] = $value;
                 break;
