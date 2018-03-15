@@ -190,6 +190,7 @@ class Response implements ResponseInterface
      * Has added over.
      *
      * @return bool
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function hasAdded(): bool

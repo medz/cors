@@ -57,7 +57,7 @@ class Cors
 
         // The request not is CORS request,
         // break the handle.
-        if (! $this->cors->isCorsRequest($type, $request)) {
+        if (!$this->cors->isCorsRequest($type, $request)) {
             return $next($request);
 
         // Check the request is option,
@@ -73,7 +73,7 @@ class Cors
         } elseif (class_exists(RequestHandled::class)) {
             $this->events->listen(RequestHandled::class, function (RequestHandled $event) use ($type) {
                 $event->response = $this->corsHandle($type, $event->request, $event->response);
-            }); 
+            });
         }
 
         return $this->corsHandle($type, $request, $next($request));
@@ -83,14 +83,16 @@ class Cors
      * CORS serve singleton handle.
      *
      * @param string $type
-     * @param any $request
-     * @param any $response
+     * @param any    $request
+     * @param any    $response
+     *
      * @return mixed
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     protected function corsHandle(string $type, $request, $response)
     {
-        if (! $this->cors->hasAdded()) {
+        if (!$this->cors->hasAdded()) {
             $this->cors->setRequest($type, $request);
             $this->cors->setResponse($type, $response);
             $this->cors->handle();
