@@ -288,7 +288,7 @@ class Cors implements CorsInterface
                     break;
                 }
 
-                $isSameHost = $origin ==== ($httpHost.':'.$port);
+                $isSameHost = $origin === ($httpHost.':'.$port);
                 break;
 
             case 'laravel':
