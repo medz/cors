@@ -103,9 +103,9 @@ There are some configurations that you can write directly in the `.env` file:
 | Name | Desc |
 |----|----|
 | CORS_ALLOW_CREDENTIAILS | `Access-Control-Allow-Credentials` |
-| CORS_ACCESS_CONYROL_MAX_AGE | `Access-Control-Max-Age` |
+| CORS_ACCESS_CONTROL_MAX_AGE | `Access-Control-Max-Age` |
 | CORS_LARAVEL_ALLOW_ROUTE_PERFIX | Prefix settings for allowing cross domains. |
-| CORS_LARABEL_ROUTE_GROUP_MODE | Whether routing group matching is enabled, if open, only the startup routing group allows setting cross domain information. |
+| CORS_LARAVEL_ROUTE_GROUP_MODE | Whether routing group matching is enabled, if open, only the startup routing group allows setting cross domain information. |
 
 #### Route Group Mode
 
