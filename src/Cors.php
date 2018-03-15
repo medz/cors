@@ -246,6 +246,7 @@ class Cors implements CorsInterface
      * Has added.
      *
      * @return bool
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function hasAdded(): bool
@@ -269,8 +270,10 @@ class Cors implements CorsInterface
      * The request is CORE request.
      *
      * @param string $type
-     * @param any $request
+     * @param any    $request
+     *
      * @return bool
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function isCorsRequest(string $type, $request): bool
@@ -282,7 +285,7 @@ class Cors implements CorsInterface
                 $scheme = $request->getUri()->getScheme();
                 $httpHost = $scheme.'://'.$request->getUri()->getHost();
                 $port = $request->getUri()->getPort();
-                
+
                 if (('http' == $scheme && 80 == $port) || ('https' == $scheme && 443 == $port)) {
                     $isSameHost = $origin === $httpHost;
                     break;
@@ -295,21 +298,23 @@ class Cors implements CorsInterface
             case 'symfony':
                 $isSameHost = $origin === $request->getSchemeAndHttpHost();
                 break;
-            
+
             default:
                 $isSameHost = false;
                 break;
         }
 
-        return $origin && ! $isSameHost;
+        return $origin && !$isSameHost;
     }
 
     /**
      * The request is perflight request.
      *
      * @param string $type
-     * @param any $request
+     * @param any    $request
+     *
      * @return bool
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function isPreflightRequest(string $type, $request): bool
