@@ -33,13 +33,10 @@ class LaravelServiceProvider extends ServiceProvider
         // Publish the cors.php to laravel config dir.
         $this->publishes([__DIR__.'/../../../config/cors.php' => config_path('cors.php')]);
 
-        if (config('cors.laravel.prepend-global-middleware')) {
-            $kernel = $this->app->make(Kernel::class);
-
-            // When the Cors middleware is not attached globally.
-            if (!$kernel->hasMiddleware(CorsMiddleware::class)) {
-                $kernel->prependMiddleware(CorsMiddleware::class);
-            }
+        $kernel = $this->app->make(Kernel::class);
+        // When the Cors middleware is not attached globally.
+        if (!$kernel->hasMiddleware(CorsMiddleware::class)) {
+            $kernel->prependMiddleware(CorsMiddleware::class);
         }
     }
 

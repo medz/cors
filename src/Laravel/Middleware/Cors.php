@@ -53,7 +53,7 @@ class Cors
      */
     public function handle($request, Closure $next)
     {
-        $type = config('cors.laravel.using-http-message-type', 'laravel');
+        $type = 'laravel';
 
         // The request not is CORS request,
         // break the handle.
@@ -64,15 +64,15 @@ class Cors
         // is "option" request return CORS headers response.
         } elseif ($this->cors->isPreflightRequest($type, $request)) {
             $this->cors->setRequest($type, $request);
-            $this->cors->setResponse('laravel', $response = new Response());
+            $this->cors->setResponse($type, $response = new Response());
             $this->cors->handle();
 
             return $response;
 
         // Add the headers on the Request Handled event as fallback in case of exceptions
         } elseif (class_exists(RequestHandled::class)) {
-            $this->events->listen(RequestHandled::class, function (RequestHandled $event) use ($type) {
-                $event->response = $this->corsHandle($type, $event->request, $event->response);
+            $this->events->listen(RequestHandled::class, function (RequestHandled $event) {
+                $event->response = $this->corsHandle($event->request, $event->response);
             });
         }
 
@@ -82,15 +82,14 @@ class Cors
     /**
      * CORS serve singleton handle.
      *
-     * @param string $type
-     * @param any    $request
-     * @param any    $response
+     * @param any $request
+     * @param any $response
      *
      * @return mixed
      *
      * @author Seven Du <shiweidu@outlook.com>
      */
-    protected function corsHandle(string $type, $request, $response)
+    protected function corsHandle($request, $response)
     {
         if (!$this->cors->hasAdded()) {
             $this->cors->setRequest($type, $request);
