@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Medz\Cors\Laravel\Providers;
 
-use Illuminate\Foundation\Http\Kernel;
+use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\ServiceProvider;
 use Medz\Cors\Cors;
 use Medz\Cors\CorsInterface;
@@ -34,7 +34,6 @@ class LaravelServiceProvider extends ServiceProvider
         $this->publishes([__DIR__.'/../../../config/cors.php' => config_path('cors.php')]);
 
         if (config('cors.laravel.prepend-global-middleware')) {
-            /** @var \Illuminate\Foundation\Http\Kernel $kernel */
             $kernel = $this->app->make(Kernel::class);
 
             // When the Cors middleware is not attached globally.

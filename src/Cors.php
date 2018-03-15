@@ -83,7 +83,7 @@ class Cors implements CorsInterface
      */
     public function __construct(array $config)
     {
-        $this->allowedCredentials = (bool) ($config['allwo-credentiails'] ?? false);
+        $this->allowedCredentials = (bool) ($config['allow-credentiails'] ?? false);
         $this->allowedHeaders = (array) ($config['allow-headers'] ?? []);
         $this->exposeHeaders = (array) ($config['expose-headers'] ?? []);
         $this->origins = (array) ($config['origins'] ?? []);
@@ -251,6 +251,10 @@ class Cors implements CorsInterface
      */
     public function hasAdded(): bool
     {
+        if (!$this->response instanceof ResponseInterface) {
+            return false;
+        }
+
         return $this->response->hasAdded();
     }
 

@@ -37,7 +37,7 @@ class Response implements ResponseInterface
      *
      * @author Seven Du <shiweidu@outlook.com>
      */
-    public function __constrcut(string $type, $response = null)
+    public function __construct(string $type, $response = null)
     {
         $this->type = strtolower($type);
         $this->response = $response;

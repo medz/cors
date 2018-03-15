@@ -62,7 +62,7 @@ class Cors
 
         // Check the request is option,
         // is "option" request return CORS headers response.
-        } elseif ($this->isPreflightRequest($type, $request)) {
+        } elseif ($this->cors->isPreflightRequest($type, $request)) {
             $this->cors->setRequest($type, $request);
             $this->cors->setResponse('laravel', $response = new Response());
             $this->cors->handle();
