@@ -90,7 +90,13 @@ protected $middleware => [
 
 #### Configure
 
-You run Laravel Artisan command: `php artisan vendor::publish --force --class="\Medz\Cors\Laravel\Probiders\LaravelServiceProvider"` publish `cors.php` file to `config` dir.
+You run Laravel Artisan command: 
+
+```shell
+php artisan vendor::publish --force --class="\Medz\Cors\Laravel\Probiders\LaravelServiceProvider"
+```
+
+publish `cors.php` file to `config` dir.
 
 There are some configurations that you can write directly in the `.env` file:
 
