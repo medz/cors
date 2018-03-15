@@ -89,7 +89,7 @@ class Cors
      */
     protected function hasShouldRouteGroup($request): bool
     {
-        if (!config('cors.laravel.route-grouo-mode')) {
+        if (!config('cors.laravel.route-group-mode')) {
             return true;
         }
 
