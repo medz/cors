@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Medz\Cors\Laravel\Middleware;
 
 use Closure;
+use Route;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Foundation\Http\Events\RequestHandled;
 use Illuminate\Http\Request;
@@ -57,15 +58,13 @@ class Cors
 
         // The request not is CORS request,
         // break the handle.
-        if (!$this->cors->isCorsRequest($type, $request)) {
+        if (!$this->hasShouldRouteGroup($request) || !$this->hasAllowRoutePerfix($request) || !$this->cors->isCorsRequest($type, $request)) {
             return $next($request);
 
         // Check the request is option,
         // is "option" request return CORS headers response.
         } elseif ($this->cors->isPreflightRequest($type, $request)) {
-            $this->cors->setRequest($type, $request);
-            $this->cors->setResponse($type, $response = new Response());
-            $this->cors->handle();
+            $this->corsHandle($request, $response = new Response());
 
             return $response;
 
@@ -76,7 +75,49 @@ class Cors
             });
         }
 
-        return $this->corsHandle($type, $request, $next($request));
+        return $this->corsHandle($request, $next($request));
+    }
+
+    /**
+     * Has should route group.
+     *
+     * @param mixed $request
+     * @return bool
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    protected function hasShouldRouteGroup($request): bool
+    {
+        if (!config('cors.laravel.route-grouo-mode')) {
+            return true;
+        }
+
+        $shouldClsssName = ShouldGroup::class;
+        $shouldAlias = collect(Route::getMiddleware())->flip()->get($shouldClsssName, $shouldClsssName);
+        $middlewareGroups = collect(Route::getMiddlewareGroups())->filter(function ($group) use ($shouldClsssName, $shouldAlias) {
+            return in_array($shouldAlias, $group) || in_array($shouldClsssName, $group);
+        })->keys();
+        $gatherMiddleware = Route::getRoutes()->match($request)->gatherMiddleware();
+
+        if (in_array($shouldClsssName, $gatherMiddleware) || in_array($shouldAlias, $gatherMiddleware)) {
+            return true;
+        }
+
+        return $middlewareGroups->filter(function ($value) use ($gatherMiddleware) {
+            return in_array($value, $gatherMiddleware);
+        })->isNotEmpty();
+    }
+
+    /**
+     * Has the request allow route perfix.
+     *
+     * @param \Illumante\Http\Request $request
+     * @return bool
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    protected function hasAllowRoutePerfix($request): bool
+    {
+
+        return $request->is(config('cors.laravel.allow-route-perfix'));
     }
 
     /**
@@ -92,8 +133,8 @@ class Cors
     protected function corsHandle($request, $response)
     {
         if (!$this->cors->hasAdded()) {
-            $this->cors->setRequest($type, $request);
-            $this->cors->setResponse($type, $response);
+            $this->cors->setRequest('laravel', $request);
+            $this->cors->setResponse('laravel', $response);
             $this->cors->handle();
         }
 

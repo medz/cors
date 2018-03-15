@@ -60,7 +60,7 @@ class Request implements RequestInterface
             // Check the is Laravel or Symfony.
             case 'laravel':
             case 'symfony':
-                return $this->request->headers->get($name) ?: $default;
+                return $this->request->headers->get($name, $default);
         }
 
         // Not using framewoerk ?
