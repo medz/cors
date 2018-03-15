@@ -110,6 +110,7 @@ class Cors implements CorsInterface
         $this->response->setAccessControlAllowHeaders($this->getAllowheaders());
         $this->response->setAccessControlExposeHeaders($this->getExposeHeaders());
         $this->response->setAccessControlMaxAge($this->getMaxAge());
+        $this->response->setAddedStatus(true);
     }
 
     /**
@@ -242,6 +243,17 @@ class Cors implements CorsInterface
     }
 
     /**
+     * Has added.
+     *
+     * @return bool
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    public function hasAdded(): bool
+    {
+        return $this->response->hasAdded();
+    }
+
+    /**
      * Get set CORS response.
      *
      * @return any The return to the solution depends on the set of response.
@@ -251,5 +263,77 @@ class Cors implements CorsInterface
     public function getResponse()
     {
         return $this->response->returnNative();
+    }
+
+    /**
+     * The request is CORE request.
+     *
+     * @param string $type
+     * @param any $request
+     * @return bool
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    public function isCorsRequest(string $type, $request): bool
+    {
+        $origin = (new Request($type, $request))->getOrigin();
+
+        switch (strtolower($type)) {
+            case 'psr-7':
+                $scheme = $request->getUri()->getScheme();
+                $httpHost = $scheme.'://'.$request->getUri()->getHost();
+                $port = $request->getUri()->getPort();
+                
+                if (('http' == $scheme && 80 == $port) || ('https' == $scheme && 443 == $port)) {
+                    $isSameHost = $origin === $httpHost;
+                    break;
+                }
+
+                $isSameHost = $origin ==== ($httpHost.':'.$port);
+                break;
+
+            case 'laravel':
+            case 'symfony':
+                $isSameHost = $origin === $request->getSchemeAndHttpHost();
+                break;
+            
+            default:
+                $isSameHost = false;
+                break;
+        }
+
+        return $origin && ! $isSameHost;
+    }
+
+    /**
+     * The request is perflight request.
+     *
+     * @param string $type
+     * @param any $request
+     * @return bool
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    public function isPreflightRequest(string $type, $request): bool
+    {
+        $requestManager = new Request($type, $request);
+        switch (strtolower($type)) {
+            case 'psr-7':
+            case 'laravel':
+            case 'symfony':
+                $method = $request->getMethod();
+                break;
+
+            default:
+                $method = strtolower($_SERVER['REQUEST_METHOD']);
+                if ($method === 'post') {
+                    if ($_method = $requestManager->getHeader('X-HTTP-METHOD-OVERRIDE')) {
+                        $method = $_method;
+                    }
+                }
+                break;
+        }
+
+        return $this->isCorsRequest($type, $request)
+            && 'options' === strtolower($method)
+            && $requestManager->getHeader('Access-Control-Request-Method');
     }
 }

@@ -55,25 +55,47 @@ class Cors
     {
         $type = config('cors.laravel.using-http-message-type', 'laravel');
 
+        // The request not is CORS request,
+        // break the handle.
+        if (! $this->cors->isCorsRequest($type, $request)) {
+            return $next($request);
+
+        // Check the request is option,
+        // is "option" request return CORS headers response.
+        } elseif ($this->isPreflightRequest($type, $request)) {
+            $this->cors->setRequest($type, $request);
+            $this->cors->setResponse('laravel', $response = new Response());
+            $this->cors->handle();
+
+            return $response;
+
         // Add the headers on the Request Handled event as fallback in case of exceptions
-        if (class_exists(RequestHandled::class)) {
+        } elseif (class_exists(RequestHandled::class)) {
             $this->events->listen(RequestHandled::class, function (RequestHandled $event) use ($type) {
-                $this->cors->setRequest($type, $event->request);
-                $this->cors->setResponse($type, $event->response);
-                $this->cors->handle();
-            });
-        } elseif ($this->events->hasListeners('kernel.handled')) {
-            $this->events->listen('kernel.handled', function (Request $request, Response $response) {
-                $this->cors->setRequest('laravel', $request);
-                $this->cors->setResponse('laravel', $response);
-                $this->cors->handle();
-            });
+                $event->response = $this->corsHandle($type, $event->request, $event->response);
+            }); 
         }
 
-        $this->cors->setRequest($type, $request);
-        $this->cors->setResponse($type, $response = $next($request));
-        $this->cors->handle();
+        return $this->corsHandle($type, $request, $next($request));
+    }
 
-        return $response;
+    /**
+     * CORS serve singleton handle.
+     *
+     * @param string $type
+     * @param any $request
+     * @param any $response
+     * @return mixed
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    protected function corsHandle(string $type, $request, $response)
+    {
+        if (! $this->cors->hasAdded()) {
+            $this->cors->setRequest($type, $request);
+            $this->cors->setResponse($type, $response);
+            $this->cors->handle();
+        }
+
+        return $this->cors->getResponse();
     }
 }

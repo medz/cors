@@ -21,6 +21,13 @@ class Response implements ResponseInterface
     protected $type;
 
     /**
+     * The response added headers.
+     *
+     * @var bool
+     */
+    protected $added = false;
+
+    /**
      * Create the response.
      *
      * @param string $type
@@ -177,5 +184,23 @@ class Response implements ResponseInterface
     public function returnNative()
     {
         return $this->response;
+    }
+
+    /**
+     * Has added over.
+     *
+     * @return bool
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    public function hasAdded(): bool
+    {
+        return boolval($this->added);
+    }
+
+    public function setAddedStatus(bool $added)
+    {
+        $this->added = $added;
+
+        return $this;
     }
 }
