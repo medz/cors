@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Medz\Cors\Laravel\Middleware;
 
 use Closure;
-use Route;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Foundation\Http\Events\RequestHandled;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Medz\Cors\CorsInterface;
+use Route;
 
 class Cors
 {
@@ -82,7 +82,9 @@ class Cors
      * Has should route group.
      *
      * @param mixed $request
+     *
      * @return bool
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     protected function hasShouldRouteGroup($request): bool
@@ -111,12 +113,13 @@ class Cors
      * Has the request allow route perfix.
      *
      * @param \Illumante\Http\Request $request
+     *
      * @return bool
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     protected function hasAllowRoutePerfix($request): bool
     {
-
         return $request->is(config('cors.laravel.allow-route-perfix'));
     }
 
