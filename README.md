@@ -93,7 +93,7 @@ protected $middleware => [
 You run Laravel Artisan command: 
 
 ```shell
-php artisan vendor::publish --force --class="\Medz\Cors\Laravel\Probiders\LaravelServiceProvider"
+php artisan vendor:publish --provider="Medz\Cors\Laravel\Providers\LaravelServiceProvider" --force
 ```
 
 publish `cors.php` file to `config` dir.
