@@ -98,7 +98,9 @@ class Cors
         $middlewareGroups = collect(Route::getMiddlewareGroups())->filter(function ($group) use ($shouldClsssName, $shouldAlias) {
             return in_array($shouldAlias, $group) || in_array($shouldClsssName, $group);
         })->keys();
-        $gatherMiddleware = Route::getRoutes()->match($request)->gatherMiddleware();
+        $gatherMiddleware = collect(Route::getRoutes()->get())->first(function ($route) use ($request) {
+            return $route->uri() === $request->path();
+        })->gatherMiddleware();
 
         if (in_array($shouldClsssName, $gatherMiddleware) || in_array($shouldAlias, $gatherMiddleware)) {
             return true;
