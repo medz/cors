@@ -95,9 +95,6 @@ class Cors
 
         $shouldClsssName = ShouldGroup::class;
         $shouldAlias = collect(Route::getMiddleware())->flip()->get($shouldClsssName, $shouldClsssName);
-        $middlewareGroups = collect(Route::getMiddlewareGroups())->filter(function ($group) use ($shouldClsssName, $shouldAlias) {
-            return in_array($shouldAlias, $group) || in_array($shouldClsssName, $group);
-        })->keys();
         $gatherMiddleware = collect(Route::getRoutes()->get())->first(function ($route) use ($request) {
             return $route->uri() === $request->path();
         })->gatherMiddleware();
@@ -105,6 +102,10 @@ class Cors
         if (in_array($shouldClsssName, $gatherMiddleware) || in_array($shouldAlias, $gatherMiddleware)) {
             return true;
         }
+
+        $middlewareGroups = collect(Route::getMiddlewareGroups())->filter(function ($group) use ($shouldClsssName, $shouldAlias) {
+            return in_array($shouldAlias, $group) || in_array($shouldClsssName, $group);
+        })->keys();
 
         return $middlewareGroups->filter(function ($value) use ($gatherMiddleware) {
             return in_array($value, $gatherMiddleware);
