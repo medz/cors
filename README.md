@@ -75,7 +75,7 @@ $response = $cors->getResponse();
 
 ### Laravel
 
-> The package only support Laravel >= **`5.5`**.
+> The package only support Laravel >= **`5.5`**，中文使用教程👉 [https://laravel-china.org/topics/8816](https://laravel-china.org/topics/8816)
 
 The package `ServiceProvider` default perend to `app/Http/Kernel.php` `$middleware`, If you want to customize the order of the middleware execution, please add it to the `$middleware` manually:
 
