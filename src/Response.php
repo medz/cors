@@ -85,7 +85,11 @@ class Response implements ResponseInterface
      */
     public function setAccessControlAllowCredentials(bool $credentiale)
     {
-        $this->setHeader('Access-Control-Allow-Credentials', $credentiale ? 'true' : 'false');
+        if ($credentiale === false) {
+            return $this;
+        }
+
+        $this->setHeader('Access-Control-Allow-Credentials', 'true');
 
         return $this;
     }
