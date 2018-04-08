@@ -98,7 +98,7 @@ class Cors
         $route = collect(Route::getRoutes()->get())->first(function ($route) use ($request) {
             return $route->matches($request, false);
         });
-        if (! $route) {
+        if (!$route) {
             return false;
         }
         $gatherMiddleware = $route->gatherMiddleware();
