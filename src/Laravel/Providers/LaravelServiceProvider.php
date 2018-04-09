@@ -31,7 +31,7 @@ class LaravelServiceProvider extends ServiceProvider
     public function boot()
     {
         // Publish the cors.php to laravel config dir.
-        $this->publishes([__DIR__.'/../../../config/cors.php' => config_path('cors.php')]);
+        $this->publishes([__DIR__.'/../../../config/laravel.php' => config_path('cors.php')]);
 
         $kernel = $this->app->make(Kernel::class);
         // When the Cors middleware is not attached globally.
@@ -50,7 +50,7 @@ class LaravelServiceProvider extends ServiceProvider
     public function register()
     {
         // Marge the CORS config.
-        $this->mergeConfigFrom(__DIR__.'/../../../config/cors.php', 'cors');
+        $this->mergeConfigFrom(__DIR__.'/../../../config/laravel.php', 'cors');
 
         // Register the CORS server instance alias.
         $this->app->alias(CorsInterface::class, Cors::class);
