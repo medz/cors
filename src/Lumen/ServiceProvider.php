@@ -6,7 +6,6 @@ namespace Medz\Cors\Lumen;
 
 use Medz\Cors\Cors;
 use Medz\Cors\CorsInterface;
-use Illuminate\Http\Response;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -23,6 +22,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      * Bootstrap the service provider.
      *
      * @return void
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function boot()
@@ -34,6 +34,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      * Run the service provider register handle.
      *
      * @return void
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function register()
