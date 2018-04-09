@@ -66,6 +66,9 @@ class Cors
         } elseif ($this->cors->isPreflightRequest($type, $request)) {
             $this->corsHandle($request, $response = new Response());
 
+            // Set Preflight response status code.
+            $response->setStatusCode(204);
+
             return $response;
 
         // Add the headers on the Request Handled event as fallback in case of exceptions

@@ -47,6 +47,9 @@ class Cors
             $this->cors->setResponse($type, $response = new Response());
             $this->cors->handle();
 
+            // Set Preflight response status code.
+            $response->setStatusCode(204);
+
             return $response;
         }
 
