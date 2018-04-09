@@ -15,4 +15,4 @@ $app->configure('cors'); // 如果想 `config/cors.php` 的配置生效，请务
 $app->register(Medz\Cors\Lumen\ServiceProvider::class);
 ```
 
-> Lumen 的定义为轻量级 API 框架，所以，摒弃了 Laravel 支持中的「组模式」和「匹配模式」，转而正常请求不会赋予 CORS 信息，只有 OPTIONS 预检请求才会更具设置设置 CORS 信息。 
+> Lumen 的定义为轻量级 API 框架，所以，摒弃了 Laravel 支持中的「组模式」和「匹配模式」，转而正常请求不会赋予 CORS 信息，只有 OPTIONS 预检请求才会设置 CORS 信息。 
