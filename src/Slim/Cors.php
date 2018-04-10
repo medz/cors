@@ -19,9 +19,9 @@ class Cors
     protected $cors;
 
     /**
-     * Append CORS to all response
+     * Append CORS to all response.
      *
-     * @var boolean
+     * @var bool
      */
     protected $append = false;
 
@@ -29,6 +29,7 @@ class Cors
      * Create the Slim framework middleware instance.
      *
      * @param \Medz\Cors\CorsInterface|array|null $payload
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function __construct($payload = null, bool $append = false)
@@ -54,10 +55,12 @@ class Cors
     /**
      * The CORS middleware handle.
      *
-     * @param \Psr\Http\Message\RequestInterface $request
+     * @param \Psr\Http\Message\RequestInterface  $request
      * @param \Psr\Http\Message\ResponseInterface $response
-     * @param callable $next
+     * @param callable                            $next
+     *
      * @return \Psr\Http\Message\ResponseInterface
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function __invoke(RequestInterface $request, ResponseInterface $response, callable $next): ResponseInterface
@@ -87,7 +90,9 @@ class Cors
      * Append all response.
      *
      * @param \Psr\Http\Message\ResponseInterface $response
+     *
      * @return \Psr\Http\Message\ResponseInterface
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     protected function appendAllResponse(ResponseInterface $response): ResponseInterface
@@ -106,7 +111,9 @@ class Cors
      * Parse settings.
      *
      * @param array $settings
+     *
      * @return array
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public static function parseSettings(array $settings = []): array
