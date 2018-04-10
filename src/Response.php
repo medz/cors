@@ -153,11 +153,15 @@ class Response implements ResponseInterface
      */
     public function setAccessControlExposeHeaders($headers)
     {
+        // If hraders is array, parse to string.
         if (is_array($headers)) {
             $headers = implode(', ', $headers);
         }
 
-        $this->setHeader('Access-Control-Expose-Headers', (string) $headers);
+        // The headers not is empty, append response hraders.
+        if (!empty($headers)) {
+            $this->setHeader('Access-Control-Expose-Headers', (string) $headers);
+        }
 
         return $this;
     }
