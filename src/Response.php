@@ -176,7 +176,7 @@ class Response implements ResponseInterface
     public function setAccessControlMaxAge(int $maxAge = 0)
     {
         if ($maxAge) {
-            $this->setHeader('Access-Control-Max-Age', $maxAge);
+            $this->setHeader('Access-Control-Max-Age', (string) $maxAge);
         }
 
         return $this;
