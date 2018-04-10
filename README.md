@@ -14,7 +14,7 @@ PHP CORS (Cross-origin resource sharing) middleware.
 - [x] [Laravel Support](https://github.com/medz/cors/blob/master/docs/using-by-laravel.md)
 - [x] [Lumen Support](https://github.com/medz/cors/blob/master/docs/using-by-lumen.md)
 - [ ] Yii2 Support
-- [ ] Slim Framework
+- [x] Slim Framework
 
 ## Using
 
