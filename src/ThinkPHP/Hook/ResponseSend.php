@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace Medz\Cors\ThinkPHP\Hook;
 
+use Medz\Cors\CorsInterface;
+use think\Facade\Request as RequestFacade;
 use think\Request;
 use think\Response;
-use think\Facade\Request as RequestFacade;
-use Medz\Cors\CorsInterface;
-use think\Container;
 
 class ResponseSend
 {

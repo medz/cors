@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Medz\Cors\ThinkPHP;
 
-use think\Hook as ThinkHookManager;
 use think\Container;
+use think\Hook as ThinkHookManager;
 
 class Injecter
 {

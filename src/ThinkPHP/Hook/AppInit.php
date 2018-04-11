@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace Medz\Cors\ThinkPHP\Hook;
 
-use think\Container;
-use think\Config;
-use think\Hook as ThinkHookManager;
 use Medz\Cors\Cors;
 use Medz\Cors\CorsInterface;
-
+use think\Config;
+use think\Container;
+use think\Hook as ThinkHookManager;
 
 class AppInit
 {
