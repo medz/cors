@@ -9,3 +9,4 @@
 ### Docs
 
 - Added using by Slim framework doc ([5985fe0](https://github.com/medz/cors/commit/5985fe08443e643ba008625772fd4b7e2509b867))
+- Added release notes file, `CHANGELOG.md` file ([d206e47](https://github.com/medz/cors/commit/d206e477a06f8ba648df325ee1d61e18a81c044b))
