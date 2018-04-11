@@ -2,7 +2,7 @@
 
 > 暂无具体的 Lummen 版本要求测试，开发于 5.6 环境。
 
-## Config
+## Configure
 
 你应该在你的 Lumen 项目目录建立一个 `config` 目录，并按照👉[参考配置](https://github.com/medz/cors#configure)创建一个名为 `cors.php` 文件。
 
