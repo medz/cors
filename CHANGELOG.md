@@ -2,7 +2,7 @@
 
 ## v1.2.0 (2018-04-11)
 
-### Added
+### Feature
 
 - 😄Added [Slim Framework](https://github.com/slimphp/Slim) supported ([86b52b4](https://github.com/medz/cors/commit/86b52b47815981879352f051ce4536015e9a7259))
 
