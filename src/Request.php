@@ -61,6 +61,9 @@ class Request implements RequestInterface
             case 'laravel':
             case 'symfony':
                 return $this->request->headers->get($name, $default);
+
+            case 'thinkphp':
+                return $this->request->header($name, $default);
         }
 
         // Not using framewoerk ?

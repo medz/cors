@@ -68,6 +68,10 @@ class Response implements ResponseInterface
                 $this->response->headers->set($name, $value);
                 break;
 
+            case 'thinkphp':
+                $this->response->header($name, $value);
+                break;
+
             default:
                 $this->response[$name] = $value;
                 break;
