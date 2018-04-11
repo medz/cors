@@ -12,7 +12,10 @@
     "autoload": {
         "psr-4": {
             "Medz\\Cors\\": "src/"
-        }
+        },
+        "files": [
+            "src/ThinkPHP/injection.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
