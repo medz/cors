@@ -2,11 +2,11 @@
 
 namespace Medz\Cors\PSR;
 
-use Psr\Http\Server\RequestHandlerInterface;
-use Psr\Http\Server\MiddlewareInterface;
+use Medz\Cors\CorsInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Medz\Cors\CorsInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 class CorsMiddleware implements MiddlewareInterface
 {
@@ -21,6 +21,7 @@ class CorsMiddleware implements MiddlewareInterface
      * Create the middleware.
      *
      * @param \Medz\Cors\CorsInterface $cors
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function __construct(CorsInterface $cors)
@@ -33,7 +34,9 @@ class CorsMiddleware implements MiddlewareInterface
      *
      * @param \Psr\Http\Message\ServerRequestInterface $request
      * @param \Psr\Http\Server\RequestHandlerInterface $handle
+     *
      * @return \Psr\Http\Message\ResponseInterface
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handle): ResponseInterface
