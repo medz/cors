@@ -1,5 +1,17 @@
 # Release Notes
 
+## v1.3.0 (2018-05-09)
+
+### Feature
+
+- Added [ThinkPHP 5 framework](https://github.com/top-think/framework) support
+- Added PSR-15 server middleware
+
+### Docs
+
+- Added PSR-15 support doc
+- Added ThikPHP 5 using doc
+
 ## v1.2.0 (2018-04-11)
 
 ### Feature
