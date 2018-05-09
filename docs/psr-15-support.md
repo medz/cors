@@ -1,6 +1,6 @@
 # PSR-15 Support
 
-The `Cors\PSR\CorsMiddleware` is a PSR-15 server middleware.
+The `Medz\Cors\PSR\CorsMiddleware` is a PSR-15 server middleware.
 
 ## Using
 
