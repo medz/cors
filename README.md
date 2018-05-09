@@ -10,7 +10,7 @@ PHP CORS (Cross-origin resource sharing) middleware.
 
 - [x] [Array, Coding in Native PHP](#array)
 - [x] [Using PSR-7](#psr-7)
-- [x] PSR-15 Support
+- [x] [PSR-15 Support](https://github.com/medz/cors/blob/master/docs/psr-15-support.md)
 - [ ] Symfony Support
 - [x] [Laravel Support](https://github.com/medz/cors/blob/master/docs/using-by-laravel.md)
 - [x] [Lumen Support](https://github.com/medz/cors/blob/master/docs/using-by-lumen.md)
