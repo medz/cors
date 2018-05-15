@@ -45,7 +45,7 @@ The config example:
 
 ```php
 $config = [
-    'allow-credentiails' => false, // set "Access-Control-Allow-Credentials" 👉 string "false" or "true".
+    'allow-credentials' => false, // set "Access-Control-Allow-Credentials" 👉 string "false" or "true".
     'allow-headers'      => ['*'], // ex: Content-Type, Accept, X-Requested-With
     'expose-headers'     => [],
     'origins'            => ['*'], // ex: http://localhost
