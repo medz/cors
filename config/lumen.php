@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'allow-credentials' => env('CORS_ALLOW_CREDENTIAILS', false), // set "Access-Control-Allow-Credentials" 👉 string "false" or "true".
+    'allow-credentials'  => env('CORS_ALLOW_CREDENTIAILS', false), // set "Access-Control-Allow-Credentials" 👉 string "false" or "true".
     'allow-headers'      => ['*'], // ex: Content-Type, Accept, X-Requested-With
     'expose-headers'     => [],
     'origins'            => ['*'], // ex: http://localhost
