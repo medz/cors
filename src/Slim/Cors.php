@@ -119,7 +119,7 @@ class Cors
     public static function parseSettings(array $settings = []): array
     {
         $defaultSettings = [
-            'allow-credentiails' => false,
+            'allow-credentials' => false,
             'allow-headers'      => ['*'],
             'expose-headers'     => [],
             'origins'            => ['*'],
