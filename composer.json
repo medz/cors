@@ -1,5 +1,6 @@
 {
     "name": "medz/cors",
+    "keywords": ["cors", "php", "php-cors", "middleware", "crossdomain", "cors-request", "request", "response", "psr-7", "laravel", "laravel5", "yii2", "slim", "symfony", "thinkphp", "psr-15"],
     "description": "PHP CORS (Cross-origin resource sharing) middleware.",
     "type": "library",
     "license": "MIT",
