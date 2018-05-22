@@ -83,6 +83,10 @@ $response = $cors->getResponse();
 
 Because of the interface features provided by this package, you can implement it in a small amount of code in any other framework.
 
+### Excellent Repositories
+
+- [ThinkSNS+](https://github.com/slimkit/thinksns-plus) A strong community system
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://github.com/medz/cors/blob/master/LICENSE).
