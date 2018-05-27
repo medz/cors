@@ -89,7 +89,7 @@ Because of the interface features provided by this package, you can implement it
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://github.com/medz/cors/blob/master/LICENSE).
+The component is open-sourced software licensed under the [MIT license](https://github.com/medz/cors/blob/master/LICENSE).
 
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmedz%2Fcors.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmedz%2Fcors?ref=badge_large)
