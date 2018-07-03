@@ -18,7 +18,7 @@
 
 ## 组件是如何支持 ThinkPHP 的
 
-注入代码参考自 ThinkPHP 官方的拓展包，首先我们简历 `src/ThinkPHP/injection.php` 文件，然后在 `composer.json` 的 `autoload` 中使用 `files` 方式对该文件进行加载，代码如下：
+注入代码参考自 ThinkPHP 官方的拓展包，首先我们建立 `src/ThinkPHP/injection.php` 文件，然后在 `composer.json` 的 `autoload` 中使用 `files` 方式对该文件进行加载，代码如下：
 
 ```php
 <?php
@@ -49,4 +49,4 @@ call_user_func(function (\think\Container $container) {
 
 因为框架独占了 OPTIONS 请求的绑定以及跨域信息的判断处理，目前只能通过 `response_send` 钩子拦截 Response 实现 CORS 处理！
 
-> ThinkPHP 5.1 的中间件运行机制有问题，切无全局中间件机制。所以无法通过中间件进行预处理！！！
+> ThinkPHP 5.1 的中间件运行机制有问题，且无全局中间件机制。所以无法通过中间件进行预处理！！！
