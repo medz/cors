@@ -10,7 +10,22 @@
 
 ## 配置
 
-在 ThinkPHP 框架中，配置没有什么可选你可以在 `config` 下面新建一个名为 `cors.php` 的文件，或者在某一个模块下面新建 `cors.php` 文件，甚至可以在全局公用配置或者模块公用配置中进行 `cors` 为 `key` 的配置，其中配置内容请参考👉https://github.com/medz/cors#configure
+在 ThinkPHP 项目的 `config` 目录下新建一个 `cors.php` 文件，其中配置内容请参考👉https://github.com/medz/cors#configure 
+```php
+<?php
+
+return [
+    'allow-credentials' => false, // set "Access-Control-Allow-Credentials" 👉 string "false" or "true".
+    'allow-headers'      => ['*'], // ex: Content-Type, Accept, X-Requested-With
+    'expose-headers'     => [],
+    'origins'            => ['*'], // ex: http://localhost
+    'methods'            => ['*'], // ex: GET, POST, PUT, PATCH, DELETE
+    'max-age'            => 0,
+];
+
+```
+
+然后按照说明配置成你需要的配置即可！
 
 ## 使用
 
@@ -41,7 +56,7 @@ call_user_func(function (\think\Container $container) {
 
 ### 使用的 ThinkPHP 5 钩子
 
-在 ThinkPHP 5 中使用 `app_init` 钩子，作用是为了在框架读取模块和全局配置后进行 `CORS` 服务的单例处理注入到容器中。
+在 ThinkPHP 5 中使用 `app_init` 钩子，作用是为了在框架读取全局配置后进行 `CORS` 服务的单例处理注入到容器中。
 
 然后使用 `response_send` 在 Response 发送前进行拦截，并对其 CORS 信息的处理！
 
