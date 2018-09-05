@@ -12,10 +12,9 @@ use think\Hook as ThinkHookManager;
 
 class AppInit
 {
-    protected $hook;
     protected $config;
 
-    public function __construct(Config $config, ThinkHookManager $hook)
+    public function __construct(Config $config)
     {
         $this->config = $config;
     }
@@ -24,7 +23,7 @@ class AppInit
     {
         $this->resolveSettings();
         $cors = new Cors($this->config->pull('cors'));
-        Container::getInstance()->bind(CorsInterface::class, Cors::class);
+        Container::getInstance()->instance(Cors::class, $cors);
         Container::getInstance()->instance(CorsInterface::class, $cors);
     }
 
@@ -41,10 +40,10 @@ class AppInit
     {
         $defaultSettings = [
             'allow-credentiails' => false,
-            'allow-headers'      => ['*'],
+            'allow-headers'      => [],
             'expose-headers'     => [],
-            'origins'            => ['*'],
-            'methods'            => ['*'],
+            'origins'            => [],
+            'methods'            => [],
             'max-age'            => 0,
         ];
 
