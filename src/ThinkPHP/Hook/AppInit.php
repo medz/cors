@@ -8,7 +8,6 @@ use Medz\Cors\Cors;
 use Medz\Cors\CorsInterface;
 use think\Config;
 use think\Container;
-use think\Hook as ThinkHookManager;
 
 class AppInit
 {
