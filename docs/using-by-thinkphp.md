@@ -73,6 +73,6 @@ call_user_func(function (\think\Container $container) {
             'methods'            => ['*'], \
             'max-age'            => 0, \
         ];\
-        > ./config/cors.php
+        " > ./config/cors.php
     ```
 4. 现在，按照 https://github.com/medz/cors#configure 的配置说明去配置 `config/cors.php` 配置即可！
