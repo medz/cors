@@ -50,3 +50,29 @@ call_user_func(function (\think\Container $container) {
 因为框架独占了 OPTIONS 请求的绑定以及跨域信息的判断处理，目前只能通过 `response_send` 钩子拦截 Response 实现 CORS 处理！
 
 > ThinkPHP 5.1 的中间件运行机制有问题，且无全局中间件机制。所以无法通过中间件进行预处理！！！
+
+## Example
+
+1. 创建 ThinkPHP 框架项目
+    ```bash
+        composer create-project topthink/think tp5
+        cd tp5
+    ```
+2. 安装 CORS 插件
+    ```bash
+        composer require medz/cors
+    ```
+3. 编写配置文件
+    ```
+        echo "<?php \
+        return [\
+            'allow-credentials'  => false, \
+            'allow-headers'      => ['*'], \
+            'expose-headers'     => [], \
+            'origins'            => ['*'], \
+            'methods'            => ['*'], \
+            'max-age'            => 0, \
+        ];\
+        > ./config/cors.php
+    ```
+4. 现在，按照 https://github.com/medz/cors#configure 的配置说明去配置 `config/cors.php` 配置即可！
