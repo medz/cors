@@ -23,7 +23,7 @@ class Cors
      *
      * @var bool
      */
-    protected $append = false;
+    protected $append = true;
 
     /**
      * Create the Slim framework middleware instance.
@@ -32,7 +32,7 @@ class Cors
      *
      * @author Seven Du <shiweidu@outlook.com>
      */
-    public function __construct($payload = null, bool $append = false)
+    public function __construct($payload = null, bool $append = true)
     {
         $this->append = $append;
         // Default CORS settings.
