@@ -2,9 +2,9 @@
 
 namespace Medz\Cors\Swoft;
 
-use Swoft\App;
 use Medz\Cors\Cors;
 use Medz\Cors\CorsInterface;
+use Swoft\App;
 
 /**
  * @\Swoft\Bean\Annotation\Bean('cors.main')
@@ -14,10 +14,11 @@ class CorsBean
     /**
      * The cors instance.
      */
-    static protected $cors;
+    protected static $cors;
 
     /**
      * Set a cors instance.
+     *
      * @param \Medz\Cors\CorsInterface $cors
      */
     public function setCors(CorsInterface $cors)
@@ -29,6 +30,7 @@ class CorsBean
 
     /**
      * Get the cors instance.
+     *
      * @return \Medz\Cors\CorsInterface
      */
     public function getCors(): CorsInterface
@@ -42,6 +44,7 @@ class CorsBean
 
     /**
      * Has the http request is only preflight.
+     *
      * @return bool
      */
     public function onlyPreflight(): bool
@@ -53,8 +56,10 @@ class CorsBean
 
     /**
      * Get the cors configures.
+     *
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
+     *
      * @return mixed
      */
     public function getConfigure(string $key = '', $value = null)
@@ -64,6 +69,7 @@ class CorsBean
 
     /**
      * Resolve the cors.
+     *
      * @return \Medz\Cors\CorsInterface
      */
     protected function createCors(): CorsInterface
@@ -75,7 +81,9 @@ class CorsBean
 
     /**
      * Parse settings.
+     *
      * @param array $settings
+     *
      * @return array
      */
     protected function parseSettings(array $settings): array
@@ -94,8 +102,10 @@ class CorsBean
 
     /**
      * Call "Medz\Cors\CorsInterface" methods.
+     *
      * @param string $method
-     * @param array $parameters
+     * @param array  $parameters
+     *
      * @return mixed
      */
     public function __call($method, $parameters)
