@@ -20,7 +20,7 @@ class CorsMiddleware implements MiddlewareInterface
 
     /**
      * Only using preflight request.
-     * 
+     *
      * @var bool
      */
     protected $onlyPreflight;
@@ -33,7 +33,7 @@ class CorsMiddleware implements MiddlewareInterface
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function __construct($payload = null, $onlyPreflight = false)
-    {   
+    {
         $this->cors = static::resoveCors($payload);
         $this->onlyPreflight = $onlyPreflight;
     }
@@ -55,8 +55,7 @@ class CorsMiddleware implements MiddlewareInterface
             if ($this->cors->isPreflightRequest('psr-7', $request)) {
                 return $this
                     ->handle($request, $response)
-                    ->withStatus(204)
-                ;
+                    ->withStatus(204);
             }
 
             return $response;
@@ -67,8 +66,10 @@ class CorsMiddleware implements MiddlewareInterface
 
     /**
      * Process cors headers.
+     *
      * @param \Psr\Http\Message\ServerRequestInterface $request
-     * @param \Psr\Http\Message\ResponseInterface $response
+     * @param \Psr\Http\Message\ResponseInterface      $response
+     *
      * @return \Psr\Http\Message\ResponseInterface
      */
     public function handle(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
@@ -83,14 +84,16 @@ class CorsMiddleware implements MiddlewareInterface
 
     /**
      * Resolve cors instance.
+     *
      * @param \Medz\Cors\CorsInterface|array $payload
+     *
      * @return \Medz\Cors\CorsInterface
      */
     protected function resoveCors($payload): CorsInterface
     {
         if ($payload instanceof CorsInterface) {
             return $payload;
-        } elseif (! is_array($payload)) {
+        } elseif (!is_array($payload)) {
             $payload = [];
         }
 
@@ -99,7 +102,9 @@ class CorsMiddleware implements MiddlewareInterface
 
     /**
      * Parse settings.
+     *
      * @param array $settings
+     *
      * @return array
      */
     protected function parseSettings(array $settings): array
