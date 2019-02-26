@@ -39,3 +39,14 @@ $app->add(new Medz\Cors\Slim\Cors($cors));
 
 - payload: This is Medz\Cors\CorsInterface or array or null
 - append: The type is boolean, If using `true`, All request set CORS to response hraders.
+
+E.g:
+
+```php
+$settings = [
+    // The configure see https://github.com/medz/cors#configure
+];
+$appendAllResponse = true;
+$app = new Slim\App();
+$app->add(new Medz\Cors\Slim\Cors($settings, $appendAllResponse));
+```
