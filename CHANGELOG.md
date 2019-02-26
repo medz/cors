@@ -1,6 +1,16 @@
 # Release Notes
 
-## v。3.1 (2018-05-15)
+## v4.0.0 (2019-02-26)
+
+### Feature
+
+- Add [Swoft framework](docs/using-by-swoft.md) Suppord.
+
+### Refactor
+
+- **PSR-15**: ⚠️Refactor PSR-15 middleware.
+
+## v.3.1 (2018-05-15)
 
 ### Fixed
 
