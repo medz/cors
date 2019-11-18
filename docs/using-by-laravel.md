@@ -33,7 +33,7 @@ There are some configurations that you can write directly in the `.env` file:
 |----|----|
 | CORS_ALLOW_CREDENTIAILS | `Access-Control-Allow-Credentials` |
 | CORS_ACCESS_CONTROL_MAX_AGE | `Access-Control-Max-Age` |
-| CORS_LARAVEL_ALLOW_ROUTE_PERFIX | Prefix settings for allowing cross domains. |
+| CORS_LARAVEL_ALLOW_ROUTE_PREFIX | Prefix settings for allowing cross domains. |
 | CORS_LARAVEL_ROUTE_GROUP_MODE | Whether routing group matching is enabled, if open, only the startup routing group allows setting cross domain information. |
 
 ### Route Group Mode
@@ -77,6 +77,6 @@ protected $middlewareGroups = [
 
 Routing prefixes, also known as route matching, allow you to configure routing rules. Only routes that meet the rules are allowed to cross domains.
 
-You can modify the `config.cors.php` `laravel.allow-route-perfix` value to configure, or you can use `CORS_LARAVEL_ALLOW_ROUTE_PERFIX` to set rules in `.env`.
+You can modify the `config.cors.php` `laravel.allow-route-prefix` value to configure, or you can use `CORS_LARAVEL_ALLOW_ROUTE_PERFIX` to set rules in `.env`.
 
 The default setting is `*`.

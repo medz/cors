@@ -120,7 +120,7 @@ class Cors
     }
 
     /**
-     * Has the request allow route perfix.
+     * Has the request allow route prefix.
      *
      * @param \Illumante\Http\Request $request
      *
@@ -130,7 +130,7 @@ class Cors
      */
     protected function hasAllowRoutePerfix($request): bool
     {
-        return $request->is(config('cors.laravel.allow-route-perfix'));
+        return $request->is(config('cors.laravel.allow-route-prefix'));
     }
 
     /**

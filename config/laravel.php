@@ -8,7 +8,7 @@ return [
     'methods'            => ['*'], // ex: GET, POST, PUT, PATCH, DELETE
     'max-age'            => env('CORS_ACCESS_CONTROL_MAX_AGE', 0),
     'laravel'            => [
-        'allow-route-perfix' => env('CORS_LARAVEL_ALLOW_ROUTE_PERFIX', '*'), // The perfix is using \Illumante\Http\Request::is method. 👉
+        'allow-route-prefix' => env('CORS_LARAVEL_ALLOW_ROUTE_PREFIX', '*'), // The prefix is using \Illumante\Http\Request::is method. 👉
         'route-group-mode'   => env('CORS_LARAVEL_ROUTE_GROUP_MODE', false),
     ],
 ];
