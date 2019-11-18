@@ -58,7 +58,7 @@ class Cors
 
         // The request not is CORS request,
         // break the handle.
-        if (!$this->hasShouldRouteGroup($request) || !$this->hasAllowRoutePerfix($request) || !$this->cors->isCorsRequest($type, $request)) {
+        if (!$this->hasShouldRouteGroup($request) || !$this->hasAllowRoutePrefix($request) || !$this->cors->isCorsRequest($type, $request)) {
             return $next($request);
 
         // Check the request is option,
@@ -128,7 +128,7 @@ class Cors
      *
      * @author Seven Du <shiweidu@outlook.com>
      */
-    protected function hasAllowRoutePerfix($request): bool
+    protected function hasAllowRoutePrefix($request): bool
     {
         return $request->is(config('cors.laravel.allow-route-prefix'));
     }
