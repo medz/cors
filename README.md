@@ -1,5 +1,6 @@
 # CORS
 
+![PHP Composer](https://github.com/medz/cors/workflows/PHP%20Composer/badge.svg)
 [![StyleCI](https://styleci.io/repos/125001413/shield?branch=master)](https://styleci.io/repos/125001413)
 [![Build Status](https://travis-ci.org/medz/cors.svg?branch=master)](https://travis-ci.org/medz/cors)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmedz%2Fcors.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmedz%2Fcors?ref=badge_shield)

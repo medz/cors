@@ -27,6 +27,7 @@
         "php": ">=7.0"
     },
     "require-dev": {
+        "php": ">=7.3",
         "phpunit/phpunit": "^9.1"
     },
     "scripts": {
